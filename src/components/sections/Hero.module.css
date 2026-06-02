@@ -1,0 +1,236 @@
+/* ==========================================
+   LAYER 1: CONTAINER & BASE
+   ========================================== */
+.heroContainer {
+  position: relative;
+  min-height: 100svh;
+  background: var(--void);
+  overflow: hidden; /* CRITICAL: prevents x-overflow from splines */
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================
+   LAYER 1: AMBIENT BACKGROUND
+   ========================================== */
+.backgroundWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.5; /* 40-60% opacity per requirements */
+}
+
+.splineFallback {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(77, 255, 223, 0.05) 0%, transparent 60%);
+}
+
+/* ==========================================
+   LAYER 2: GRADIENT OVERLAY
+   ========================================== */
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    var(--void) 0%,
+    rgba(0, 0, 0, 0.7) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ==========================================
+   LAYER 3 & 4: GRID CONTAINER
+   ========================================== */
+.gridContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ==========================================
+   LAYER 3: CONTENT COLUMN
+   ========================================== */
+.contentColumn {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  animation: heroFadeIn 1.2s var(--ease-out) forwards;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.roles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chalk);
+}
+
+.roles li {
+  position: relative;
+}
+
+.roles li::before {
+  content: '';
+}
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--void);
+  background: var(--signal);
+  padding: 12px 24px;
+  border-radius: 4px;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.primaryCta:hover {
+  background: var(--white);
+  transform: translateY(-2px);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  border-bottom: 1px solid var(--dust);
+  padding: 8px 0;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.secondaryCta:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+/* ==========================================
+   SCROLL INDICATOR
+   ========================================== */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--smoke);
+  animation: bounce 2s infinite var(--ease-out);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translate(-50%, 0);
+  }
+  40% {
+    transform: translate(-50%, -10px);
+  }
+  60% {
+    transform: translate(-50%, -5px);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1024px) {
+  .gridContainer {
+    padding-top: var(--space-3xl);
+  }
+
+  .contentColumn {
+    width: 100%;
+  }
+
+  .gradientOverlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.5) 40%,
+      transparent 100%
+    );
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+    align-items: center;
+  }
+
+  .gridContainer {
+    padding-top: 0;
+  }
+
+  .name {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  /* Disable expensive WebGL interactions on mobile for both canvases */
+  .backgroundWrapper {
+    pointer-events: none;
+  }
+}

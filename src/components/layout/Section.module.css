@@ -1,0 +1,43 @@
+.section {
+  position: relative;
+  padding: var(--section-padding) var(--gutter);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.fullBleed {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fullBleed .sectionHeader {
+  padding: 0 var(--gutter);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--smoke);
+}
+
+.sectionHeader::before {
+  content: '──';
+  color: var(--dust);
+}
+
+.number {
+  color: var(--signal);
+}
+
+.label {
+  color: var(--smoke);
+}
