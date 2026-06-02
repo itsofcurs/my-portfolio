@@ -16,12 +16,9 @@ export default function Hero() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsHeroVisible(true);
-          observer.disconnect(); // Only load once
-        }
+        setIsHeroVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: '200px' } // Unmount when 200px out of viewport
     );
 
     observer.observe(container);

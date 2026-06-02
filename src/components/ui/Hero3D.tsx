@@ -12,17 +12,16 @@ function ParticleNetwork(props: any) {
   
   // Generate random positions for the particles
   const sphere = useMemo(() => {
-    // Generate 1500 particles within a sphere of radius 1.5
-    return random.inSphere(new Float32Array(1500 * 3), { radius: 2 });
+    // 300 on mobile, 1500 on desktop to save GPU
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const particleCount = isMobile ? 300 : 1500;
+    return random.inSphere(new Float32Array(particleCount * 3), { radius: 2 });
   }, []);
 
   useFrame((state, delta) => {
     if (ref.current) {
-      // Slowly rotate the particle system
       ref.current.rotation.x -= delta / 10;
       ref.current.rotation.y -= delta / 15;
-      
-      // Add a slight interactive wave based on mouse position
       ref.current.position.x = THREE.MathUtils.lerp(ref.current.position.x, (state.pointer.x * Math.PI) / 10, 0.05);
       ref.current.position.y = THREE.MathUtils.lerp(ref.current.position.y, (state.pointer.y * Math.PI) / 10, 0.05);
     }
@@ -47,7 +46,7 @@ function ParticleNetwork(props: any) {
 export default function Hero3D() {
   return (
     <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, zIndex: 0 }}>
-      <Canvas camera={{ position: [0, 0, 1.5] }}>
+      <Canvas camera={{ position: [0, 0, 1.5] }} dpr={[1, 1.5]} performance={{ min: 0.5 }}>
         <fog attach="fog" args={['#09090b', 1, 3]} />
         <ambientLight intensity={0.5} />
         <ParticleNetwork />

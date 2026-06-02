@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, Suspense } from 'react';
+import { useState, useRef, Suspense, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Text, Html } from '@react-three/drei';
 import * as THREE from 'three';
@@ -87,7 +87,24 @@ function NodeNetwork({ activeNode, setActiveNode }: { activeNode: string | null,
 
 export default function Constellation() {
   const [activeCluster, setActiveCluster] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLElement>(null);
   const activeDomain = domains.find((d) => d.id === activeCluster);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: '200px' }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Section id="constellation" number="04" label="CONSTELLATION">
@@ -95,17 +112,19 @@ export default function Constellation() {
         <p className={styles.tagline}>&ldquo;THE STACK IS THE STRATEGY&rdquo;</p>
       </div>
 
-      <div className={`${styles.layout} reveal`}>
+      <div ref={containerRef as any} className={`${styles.layout} reveal`}>
         {/* 3D WebGL Graph */}
         <div className={styles.canvas}>
-          <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1} />
-            <Suspense fallback={null}>
-              <NodeNetwork activeNode={activeCluster} setActiveNode={setActiveCluster} />
-            </Suspense>
-            <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
-          </Canvas>
+          {isVisible && (
+            <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]} performance={{ min: 0.5 }}>
+              <ambientLight intensity={0.5} />
+              <pointLight position={[10, 10, 10]} intensity={1} />
+              <Suspense fallback={null}>
+                <NodeNetwork activeNode={activeCluster} setActiveNode={setActiveCluster} />
+              </Suspense>
+              <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
+            </Canvas>
+          )}
           
           <div style={{ position: 'absolute', bottom: '20px', left: '20px', color: 'var(--smoke)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', pointerEvents: 'none' }}>
             [ CLICK & DRAG TO ROTATE NETWORK ]
