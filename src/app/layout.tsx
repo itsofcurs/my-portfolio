@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Preloader from "@/components/layout/Preloader";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -57,6 +58,7 @@ export default function RootLayout({
         <Preloader />
         <Navbar />
         <main className="pl-[60px] sm:pl-[80px] w-full">{children}</main>
+        <SpeedInsights />
       </body>
     </html>
   );
