@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Preloader from "@/components/layout/Preloader";
@@ -23,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
 });
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -63,7 +63,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <Preloader />
         <Navbar />
-        <main className="pl-[60px] sm:pl-[80px] w-full">{children}</main>
+        <main className="pl-0 pb-[80px] sm:pl-[80px] sm:pb-0 w-full">{children}</main>
         <SpeedInsights />
       </body>
     </html>
