@@ -120,15 +120,25 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .rowInner {
     flex-direction: column;
     gap: var(--space-sm);
+  }
+
+  .rowLeft {
+    gap: var(--space-sm); /* Tighter gap on mobile */
+  }
+
+  .description li {
+    padding-left: 1rem;
+    font-size: 0.8125rem;
   }
 
   .rowRight {
     align-items: flex-start;
     flex-direction: row;
     gap: var(--space-sm);
+    margin-left: calc(1.5rem + var(--space-sm)); /* Align with text */
   }
 }

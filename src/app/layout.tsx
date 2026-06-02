@@ -63,7 +63,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <Preloader />
         <Navbar />
-        <main className="pl-0 pb-[80px] sm:pl-[80px] sm:pb-0 w-full">{children}</main>
+        <main className="pl-0 pb-[80px] lg:pl-[80px] lg:pb-0 w-full">{children}</main>
         <SpeedInsights />
       </body>
     </html>

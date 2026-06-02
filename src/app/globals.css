@@ -55,12 +55,25 @@
   --space-xl: 8rem;       /*  128px */
   --space-2xl: 12rem;     /*  192px */
   --space-3xl: 16rem;     /*  256px */
-  --section-padding: clamp(6rem, 15vh, 12rem);
-
-  /* Layout */
+  /* Layout Defaults (Mobile First) */
   --max-width: 1400px;
   --content-width: 1200px;
-  --gutter: clamp(24px, 5vw, 64px);
+  --gutter: 16px;
+  --section-padding: 3rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 24px;
+    --section-padding: clamp(4rem, 10vh, 8rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 40px;
+    --section-padding: clamp(6rem, 15vh, 12rem);
+  }
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -275,10 +288,4 @@ a:hover {
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  :root {
-    --section-padding: clamp(4rem, 10vh, 8rem);
-  }
-}
-
-
+/* Removed old responsive block as it's now handled mobile-first at the top */

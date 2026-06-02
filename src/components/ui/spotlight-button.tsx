@@ -86,13 +86,13 @@ export const SpotlightNav: React.FC<SpotlightNavProps> = ({ items, activeHref, o
   }, [activeIndex, items]);
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:left-6 sm:translate-x-0 z-[9999]">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:left-6 lg:translate-x-0 z-[9999]">
       <nav 
         ref={navRef}
-        className="relative flex flex-row sm:flex-col items-center px-3 py-1 sm:px-2 sm:py-4 bg-[#0a0a0a]/80 backdrop-blur-md rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-[#262626] overflow-x-auto max-w-[95vw] sm:overflow-visible"
+        className="relative flex flex-row lg:flex-col items-center px-3 py-1 lg:px-2 lg:py-4 bg-[#0a0a0a]/80 backdrop-blur-md rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.5)] border border-[#262626] overflow-x-auto max-w-[95vw] lg:overflow-visible"
       >
         <div 
-          className="absolute hidden sm:block right-0 w-[2px] bg-[#4dffdf] transition-all duration-500 rounded-full shadow-[0_0_10px_rgba(77,255,223,0.8)]"
+          className="absolute hidden lg:block right-0 w-[2px] bg-[#4dffdf] transition-all duration-500 rounded-full shadow-[0_0_10px_rgba(77,255,223,0.8)]"
           style={{
             top: `${indicatorStyle.top}px`,
             height: `${indicatorStyle.height}px`,
