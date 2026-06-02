@@ -30,10 +30,21 @@ export default function Navbar() {
   };
 
   return (
-    <SpotlightNav 
-      items={NAV_ITEMS} 
-      activeHref={activeHref} 
-      onNavigate={handleNavigate} 
-    />
+    <>
+      <div className="fixed top-4 left-4 sm:top-6 sm:left-6 z-[9999] pointer-events-auto">
+        <a href="#hero" className="flex items-center gap-2 group" onClick={(e) => { e.preventDefault(); handleNavigate('#hero'); }}>
+          <img 
+            src="/logo.png" 
+            alt="Rohan Ankush Jadhav Logo" 
+            className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(77,255,223,0.5)] transition-all duration-300 rounded-full border border-[#262626] bg-[#0a0a0a]/80 backdrop-blur-sm p-1" 
+          />
+        </a>
+      </div>
+      <SpotlightNav 
+        items={NAV_ITEMS} 
+        activeHref={activeHref} 
+        onNavigate={handleNavigate} 
+      />
+    </>
   );
 }

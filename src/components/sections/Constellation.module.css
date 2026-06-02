@@ -441,10 +441,11 @@
    ========================================== */
 @media (max-width: 900px) {
   .layout {
-    display: none;
+    display: flex;
+    flex-direction: column;
   }
 
-  .accordion {
-    display: flex;
+  .canvas {
+    min-height: 400px;
   }
 }
