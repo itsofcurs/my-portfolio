@@ -18,8 +18,8 @@ export const projects: Project[] = [
     id: 'multilingual-ai-call-analytics',
     title: 'Multilingual AI Call Analytics & Compliance System',
     description:
-      'Built a privacy-compliant multilingual call analytics platform supporting Hindi & Tamil using Whisper transcription, NLP pipelines, and LLM-based summarization. Developed REST APIs for real-time transcription, SOP compliance validation, sensitive payment data categorization, and automated reporting. Integrated real-time audio processing and analytics dashboards while ensuring regulatory data privacy and audit readiness.',
-    tags: ['Python', 'Whisper', 'NLP', 'LLMs', 'REST APIs'],
+      'Built a privacy-compliant multilingual call analytics platform supporting Hindi & Tamil using Deepgram Nova-2 transcription, NLP pipelines, and LLM-based summarization. Developed REST APIs for real-time transcription, SOP compliance validation, sensitive payment data categorization, and automated reporting. Integrated real-time audio processing and analytics dashboards while ensuring regulatory data privacy and audit readiness.',
+    tags: ['Python', 'Deepgram Nova-2', 'NLP', 'LLMs', 'REST APIs'],
     category: 'AI',
     year: '2024',
     featured: true,
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     category: 'FULL STACK',
     year: '2024',
     featured: true,
-    github: 'https://github.com/itsofcurs',
+    github: 'https://github.com/itsofcurs/ERS',
     image: '/projects/emergency-response.png',
   },
   {

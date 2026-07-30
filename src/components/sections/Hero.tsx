@@ -55,7 +55,7 @@ export default function Hero() {
               <a href="#work" className={styles.primaryCta}>
                 VIEW WORK
               </a>
-              <a href="https://drive.google.com/file/d/1Uxvr7__61K5os8ygP1qPv1_lFpPPZhPV/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className={styles.secondaryCta}>
+              <a href="https://drive.google.com/file/d/1RtbLkv08CHbyy9uS22areYBh8udLFap1/view?usp=sharing" target="_blank" rel="noopener noreferrer" className={styles.secondaryCta}>
                 RESUME
               </a>
             </div>

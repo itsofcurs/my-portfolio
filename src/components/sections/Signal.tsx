@@ -35,7 +35,7 @@ export default function Signal() {
             systems that handle sensitive data responsibly.
           </p>
           
-          <a href="https://drive.google.com/file/d/1Uxvr7__61K5os8ygP1qPv1_lFpPPZhPV/view?usp=drive_link" className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#131313] border border-[#333333] text-sm font-mono text-[#4dffdf] hover:bg-[#4dffdf]/10 hover:border-[#4dffdf]/50 transition-all duration-300 hover:scale-105 group" target="_blank" rel="noopener noreferrer">
+          <a href="https://drive.google.com/file/d/1RtbLkv08CHbyy9uS22areYBh8udLFap1/view?usp=sharing" className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#131313] border border-[#333333] text-sm font-mono text-[#4dffdf] hover:bg-[#4dffdf]/10 hover:border-[#4dffdf]/50 transition-all duration-300 hover:scale-105 group" target="_blank" rel="noopener noreferrer">
             RÉSUMÉ <span className="ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
           </a>
         </div>

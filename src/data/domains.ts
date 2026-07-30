@@ -39,7 +39,7 @@ export const domains: Domain[] = [
       { name: 'LLM Orchestration' },
       { name: 'Generative AI' },
       { name: 'NLP' },
-      { name: 'Whisper' },
+      { name: 'Deepgram Nova-2' },
       { name: 'RAG' },
       { name: 'Multi-Agent Workflows' },
     ],
